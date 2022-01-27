@@ -3,8 +3,18 @@ import { useHistory, useParams } from 'react-router-dom';
 import './AddEdit.css';
 import fireDB from "../firebase";
 import { toast } from 'react-toastify';
+/*
+The useHistory hook gives you access to the history instance that you may use to navigate.
+ useParams returns an object of key/value pairs of URL parameters. Use it to access match. params of the current <Route> .
+ */
+//Here initialState is used to hold the initial contnet topic and content for the users to edit it.
+//to access the same I have made use of the id, since Firebase is NoSQL.
 
-const initialState = {
+/*State is a plain JavaScript object used by React to represent an information about the component's current situation. It's managed in the component (just like any variable declared in a function).*/
+/*Hooks are functions that let you “hook into” React state and lifecycle features from function components.
+It allows you to use state and other React features without writing a class.
+Hooks were first introduced in React 16.8.*/
+const initialState = {  
     topic: "",
     content: "",
 };
@@ -19,7 +29,10 @@ const AddEdit = () => {
     const history = useHistory();
 
 const{id} = useParams();
-
+/*fireDB.child("Subjects").on("value", (sanpshot) => Gets a DataSnapshot for the location at the specified relative path.*/
+/*A DataSnapshot contains data from a Database location. 
+Any time you read data from the Database, you receive the data as a DataSnapshot . 
+A DataSnapshot is passed to the event callbacks you attach with on() or once() .*/
 useEffect(() => {
     fireDB.child("Subjects").on("value", (sanpshot) => {
         if(sanpshot.val() !== null){

@@ -2,8 +2,15 @@ import React, {useState, useEffect} from 'react';
 import fireDB from "../firebase";
 import { Link } from 'react-router-dom';
 import "./About.css";
-import { toast } from 'react-toastify';
+import { toast } from 'react-toastify'; // toast to give the pop-up toast messages 
 
+/*
+        Any time you read data from the Database, you receive the data as a DataSnapshot. 
+        A DataSnapshot is passed to the event callbacks you attach with on() or once(). 
+        You can extract the contents of the snapshot as a JavaScript object by calling the val() method. 
+        Alternatively, you can traverse into the snapshot by calling child() to return child 
+        snapshots (which you could then call val() on).
+        */ 
 const About = () => {
     const [data, setData] = useState({});
 
@@ -15,6 +22,7 @@ const About = () => {
                 setData({});
             }
         });
+        
 
         return() => {
             setData({});
@@ -74,3 +82,4 @@ const About = () => {
 };
 
 export default About;
+
