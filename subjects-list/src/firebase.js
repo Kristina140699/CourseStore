@@ -13,4 +13,5 @@ var firebaseConfig = {
   };
 
 const fireDB = firebase.initializeApp(firebaseConfig);
-export default fireDB.database().ref();
+export default fireDB.database().ref(); //converting it into database reference because it can't be exported as simple configurations.
+//A Reference represents a specific location in your Database and can be used for reading or writing data to that Database location.
